@@ -1,7 +1,7 @@
-output "rg" {
-  value = azurerm_resource_group.example
+output "rg_name" {
+  value = azurerm_resource_group.example.name
 }
 
-output "subscription" {
-  value = element(split("/", data.azurerm_resource_group.default.id), 4)
+output "rg_location" {
+  value = azurerm_resource_group.example.location
 }

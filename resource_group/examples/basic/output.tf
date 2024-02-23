@@ -1,3 +1,3 @@
-output name {
-  value       = module.resource_group.rg.name
+output "resource_groups" {
+  value = module.resource_group[*]
 }

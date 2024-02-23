@@ -1,19 +1,14 @@
-variable "rg_location" {
-  type        = string
-  description = "(Required) The Azure Region where the Resource Group should exist. Changing this forces a new Resource Group to be created."
+variable "rgCollection" {
+  type = list(object({
+    rg_location   = string
+    rg_name       = string
+    rg_managed_by = optional(string, "Ashutosh Pathak")
+    rg_tags = optional(map(string), {
+      "Environment" = "Production",
+      "Company"     = "MassMutual"
+    })
+  }))
+  default     = []
+  description = "Group of resource group to create"
 }
 
-variable "rg_name" {
-  type        = string
-  description = "(Required) The Azure Region where the Resource Group should exist. Changing this forces a new Resource Group to be created."
-}
-
-variable "rg_managed_by" {
-  type        = string
-  description = "(Required) The Azure Region where the Resource Group should exist. Changing this forces a new Resource Group to be created."
-}
-
-variable "rg_tags" {
-  type        = map(string)
-  description = "(Required) The Azure Region where the Resource Group should exist. Changing this forces a new Resource Group to be created."
-}

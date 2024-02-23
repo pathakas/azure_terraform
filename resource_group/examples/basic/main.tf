@@ -1,7 +1,10 @@
 module "resource_group" {
-  source        = "../../"
-  rg_name       = var.rg_name
-  rg_location   = var.rg_location
-  rg_tags       = var.rg_tags
-  rg_managed_by = var.rg_managed_by
+  source = "../../"
+  #for_each      = [ for index, value in var.rgCollection : value]
+  for_each      = { for index, value in var.rgCollection : index => value }
+  rg_name       = each.value.rg_name
+  rg_location   = each.value.rg_location
+  rg_tags       = each.value.rg_tags
+  rg_managed_by = each.value.rg_managed_by
 }
+
