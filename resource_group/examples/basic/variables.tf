@@ -1,9 +1,10 @@
-variable "rgCollection" {
+variable "resourceCollection" {
   type = list(object({
-    rg_location   = string
-    rg_name       = string
-    rg_managed_by = optional(string, "Ashutosh Pathak")
-    rg_tags = optional(map(string), {
+    location           = string
+    name               = string
+    rg_managed_by      = optional(string, "Ashutosh Pathak")
+    vnet_address_space = optional(list(string), ["10.0.0.0/16"])
+    tags = optional(map(string), {
       "Environment" = "Production",
       "Company"     = "MassMutual"
     })

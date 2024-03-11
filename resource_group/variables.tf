@@ -1,9 +1,10 @@
-variable "rg_location" {
+variable "location" {
   type        = string
   description = "(Required) The Azure Region where the Resource Group should exist. Changing this forces a new Resource Group to be created."
+  
 }
 
-variable "rg_name" {
+variable "name" {
   type        = string
   description = "(Required) The Azure Region where the Resource Group should exist. Changing this forces a new Resource Group to be created."
 }
@@ -14,7 +15,14 @@ variable "rg_managed_by" {
   default = "Ashutosh Pathak"
 }
 
-variable "rg_tags" {
+variable "tags" {
   type        = map(string)
   description = "(Required) The Azure Region where the Resource Group should exist. Changing this forces a new Resource Group to be created."
 }
+
+variable "vnet_address_space"{
+  type = list(string)
+  default = ["10.0.0.0/16"]
+}
+
+
